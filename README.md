@@ -13,7 +13,6 @@
 <div align="center">
 	<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="500">
 </div>
-![生活照](https://i.imgur.com/DBir1VH.jpg)
 ## 架構
 ## 技術
 ## 系統文件
