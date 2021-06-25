@@ -1,0 +1,201 @@
+package com.example.myapplication;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+
+import com.example.myapplication.ui.home.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Layout;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.AlignmentSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class myattendact extends AppCompatActivity {
+    String[] act_title, act_address, act_context, act_sender,act_documentid,attend_documentid;
+    Date[] act_date;
+    Long[] postid,act_id,att_id,att_uid;
+    static int att_count;
+    static String[] newdate = new String[1000];
+    int width;
+    int height;
+    private LinearLayout linearLayout;
+    RelativeLayout layout;
+    static int click;
+    int yesjoin;
+    Long[] joinid=new Long[1000];
+    Long[] actid=new Long[1000];
+    private ArrayList<myacts> bookList=new ArrayList<>();
+    public static String[][] petdata;
+  //  public static int count=0;
+    //public static boolean yes;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_myattendact);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        att_id= new Long[1000];
+        petdata=new String[100][4];
+        postwriting.update=false;
+        FirebaseFirestore data = FirebaseFirestore.getInstance();
+        data.collection("actattend")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            att_count=0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                // Log.d("HII", document.getId() + " => " + document.getLong("actid"));
+                                // att_id[att_count]=document.getLong("actid");
+                           //     att_uid[att_count]=document.getLong("uid");
+                                if(document.getString("uid").equals(login.loginid)){
+                                    System.out.println(document.getLong("actid"));
+                                    att_id[att_count]=document.getLong("actid");
+                                }
+                                // Log.d("22", "user:" + att_id[att_count]);
+                                att_count++;
+
+                            }
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("active")
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                int i=0;
+                                                com.example.myapplication.ui.home.HomeFragment.count=0;
+                                                //  int x=0;
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    //act_id[count] = document.getLong("actid");
+
+                                                    // Long id=document.getLong("actid");
+                                                    for(int x=0;x<att_count;x++){
+                                                        Log.d("22", "user:" + x);
+                                                        if(att_id[x]==document.getLong("actid")) {
+                                                            String name=document.getData().get("title").toString();
+                                                            if (name.length() > 8) {
+                                                                name=name.substring(0, 8)+"...";
+                                                            } else {
+                                                                name=name;
+                                                            }
+
+                                                            String image=document.getData().get("photo").toString();
+                                                            String actid=document.getData().get("actid").toString();
+                                                            petdata[i][0]=name;
+                                                            petdata[i][1]=image;
+                                                            petdata[i][2]=actid;
+                                                            petdata[i][3]=document.getId();
+                                                            System.out.println("CC"+petdata[i][0]);
+                                                            i++;
+                                                            com.example.myapplication.ui.home.HomeFragment.count++;
+                                                        }
+                                                        //  Log.d("count", "user:" +count);
+
+                                                    }
+                                                }
+                                                lay();
+                                            } else {
+                                                Log.w("000", "Error getting documents.", task.getException());
+                                            }
+
+                                        }
+
+                                    });
+
+                        } else {
+                            Log.w("000", "Error getting documents.", task.getException());
+                        }
+                        // rr();
+                    }
+                });
+
+    }
+
+    private void initBooks() {
+        com.example.myapplication.ui.home.HomeFragment.yes=false;
+        for (int i = 0; i < petdata.length/2; i++) {
+            if(petdata.length%2==0){
+                if(petdata[i][0]==null){
+                    break;
+                }
+                if(i%2==0){
+                    myacts friends = new myacts(petdata[i][0], petdata[i][1],petdata[i][2],petdata[i][3],petdata[i+1][0], petdata[i+1][1],petdata[i+1][2],petdata[i+1][3]);
+                    //pets fr=new pets(petdata[i+1][0], petdata[i+1][1]);
+                    System.out.println(petdata[i][0]);
+                    System.out.println(friends);
+                    bookList.add(friends);
+                    System.out.println("HEE+1");
+                    com.example.myapplication.ui.home.HomeFragment.yes=true;
+                    //bookList.add(fr);
+                }
+
+            }else{
+                if(petdata[i][0]==null){
+                    break;
+                }
+                if(i%2!=0){
+                    myacts friends = new myacts(petdata[i][0], petdata[i][1],petdata[i][2],petdata[i][3],petdata[i+1][0], petdata[i+1][1],petdata[i+1][2],petdata[i+1][3]);
+                    // pets fr=new pets(petdata[i+1][0], petdata[i+1][1]);
+                    bookList.add(friends);
+                    System.out.println("HEE");
+                    //   bookList.add(fr);
+                    com.example.myapplication.ui.home.HomeFragment.yes=true;
+                }
+
+            }
+
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//        if(item.getItemId() == android.R.id.home)
+//        {
+//            finish();
+//            return true;
+//        }
+        return super.onOptionsItemSelected(item);
+    }
+    public void lay(){
+        initBooks();
+        RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycle);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+
+        recyclerView.setLayoutManager(layoutManager);
+        activeAdapter adapter=new activeAdapter(bookList,this);
+        recyclerView.setAdapter(adapter);
+    }
+}
