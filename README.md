@@ -11,6 +11,7 @@
 相處中能更添樂趣，讓飼主能了解寵物想表達的意思並加深與寵物間的羈絆。
 ```
 <img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="100"/>
+
 ## 架構
 ## 技術
 ## 系統文件
