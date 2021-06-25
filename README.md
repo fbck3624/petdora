@@ -29,8 +29,8 @@
 | 個人頁面     |  個人資料<br>寵物資料<br>抽卡設置|
 ## 技術
 - DB：透過 firebase 作為連結整個 APP 的資料庫  
-  API：使用google api協助頁面呈現  
-  socket：協助client與server資料傳遞  
-  Programing Language：Java、Python
+- API：使用google api協助頁面呈現  
+- socket：協助client與server資料傳遞  
+- Programing Language：Java、Python
 ## 系統文件
 [企劃文件](https://docs.google.com/document/d/1_QcGSgNUrKzMmxpHispQ2iEHkTEPtVYB/export?format=docx)
