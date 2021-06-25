@@ -10,8 +10,10 @@
 使用者的好友圈，除此之外使用者還可以瀏覽與寵物相關的活動，並透過此App進行報名便能與寵物一同參加活動，雙向寵物翻譯功能，讓使用者與寵物平時的
 相處中能更添樂趣，讓飼主能了解寵物想表達的意思並加深與寵物間的羈絆。
 ```
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="30%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="30%"/>
 <img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="300"/>
-
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="300"/>
 ## 架構
 ## 技術
 ## 系統文件
