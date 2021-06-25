@@ -33,4 +33,4 @@
 3.socket：協助client與server資料傳遞
 4.Programing Language：Java、Python
 ## 系統文件
-[企劃文件](附件1.docx)
+[企劃文件](https://docs.google.com/document/d/1_QcGSgNUrKzMmxpHispQ2iEHkTEPtVYB/export?format=docx)
