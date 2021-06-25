@@ -11,10 +11,10 @@
 相處中能更添樂趣，讓飼主能了解寵物想表達的意思並加深與寵物間的羈絆。
 ```
 <div class="image" style="display:flex">
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="20%"/>
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="20%"/>
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="20%"/>
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="20%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="22%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="22%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="22%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="22%"/>
 </div>  
   
 ## 架構
