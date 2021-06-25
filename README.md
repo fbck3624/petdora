@@ -13,8 +13,8 @@
 <div class="image" style="display:flex">
 <img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="25%"/>
 <img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="25%"/>
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="300"/>
-<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="300"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="25%"/>
+<img src="https://i.imgur.com/DBir1VH.jpg" alt="Editor" width="25%"/>
 </div>  
   
 ## 架構
